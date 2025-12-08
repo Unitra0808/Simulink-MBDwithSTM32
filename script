@@ -1,0 +1,10 @@
+config load "D:\stm32\cubemx_project\MBD_Tran\MBD_Tran.ioc"
+project toolchain STM32CubeIDE
+
+SetStructure Advanced
+
+project setCustomFWPath "C:\Users\Zhang\STM32Cube\Repository\STM32Cube_FW_F4_V1.26.2"
+
+project generate 
+
+exit wait

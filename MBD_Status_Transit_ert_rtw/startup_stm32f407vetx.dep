@@ -1,0 +1,2 @@
+startup_stm32f407vetx.o: \
+ D:/stm32/cubemx_project/MBD_Tran/STM32CubeIDE/Application/User/Startup/startup_stm32f407vetx.s

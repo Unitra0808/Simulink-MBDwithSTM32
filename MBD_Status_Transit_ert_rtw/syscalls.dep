@@ -1,0 +1,2 @@
+syscalls.o: \
+ D:/stm32/cubemx_project/MBD_Tran/STM32CubeIDE/Application/User/Core/syscalls.c
