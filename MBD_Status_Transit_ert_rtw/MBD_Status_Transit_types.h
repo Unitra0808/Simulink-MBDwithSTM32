@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MBD_Status_Transit'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.7
  * Simulink Coder version         : 9.8 (R2022b) 13-May-2022
- * C/C++ source code generated on : Sat Dec  6 21:31:56 2025
+ * C/C++ source code generated on : Tue Dec  9 20:34:26 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -25,23 +25,24 @@
 /* Custom Type definition for MATLABSystem: '<S3>/Analog to Digital Converter' */
 #include "stm_adc_ll.h"
 #include "stm_adc_ll.h"
-#ifndef struct_tag_ryp2yWF35eJG09Km2BkoGG
-#define struct_tag_ryp2yWF35eJG09Km2BkoGG
+#ifndef struct_tag_X9xwsB6CJnV6Kmy8hSqtIG
+#define struct_tag_X9xwsB6CJnV6Kmy8hSqtIG
 
-struct tag_ryp2yWF35eJG09Km2BkoGG
+struct tag_X9xwsB6CJnV6Kmy8hSqtIG
 {
   boolean_T matlabCodegenIsDeleted;
   int32_T isInitialized;
   boolean_T isSetupComplete;
   ADC_Type_T* ADCHandle;
+  uint16_T ADCInternalBuffer[8];
 };
 
-#endif                                 /* struct_tag_ryp2yWF35eJG09Km2BkoGG */
+#endif                                 /* struct_tag_X9xwsB6CJnV6Kmy8hSqtIG */
 
 #ifndef typedef_stm32cube_blocks_AnalogInput__T
 #define typedef_stm32cube_blocks_AnalogInput__T
 
-typedef struct tag_ryp2yWF35eJG09Km2BkoGG stm32cube_blocks_AnalogInput__T;
+typedef struct tag_X9xwsB6CJnV6Kmy8hSqtIG stm32cube_blocks_AnalogInput__T;
 
 #endif                             /* typedef_stm32cube_blocks_AnalogInput__T */
 

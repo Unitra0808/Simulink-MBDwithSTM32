@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MBD_Status_Transit'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.7
  * Simulink Coder version         : 9.8 (R2022b) 13-May-2022
- * C/C++ source code generated on : Sat Dec  6 21:31:56 2025
+ * C/C++ source code generated on : Tue Dec  9 20:34:26 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -73,6 +73,9 @@
 /* Block signals (default storage) */
 typedef struct {
   uint32_T Gain;                       /* '<Root>/Gain' */
+  uint32_T Gain2;                      /* '<Root>/Gain2' */
+  uint32_T Gain1;                      /* '<Root>/Gain1' */
+  uint32_T Gain3;                      /* '<Root>/Gain3' */
 } B_MBD_Status_Transit_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -83,12 +86,24 @@ typedef struct {
 /* External outputs (root outports fed by signals with default storage) */
 typedef struct {
   uint32_T Out1;                       /* '<Root>/Out1' */
+  uint32_T Out2;                       /* '<Root>/Out2' */
+  uint32_T Out3;                       /* '<Root>/Out3' */
+  uint32_T Out4;                       /* '<Root>/Out4' */
 } ExtY_MBD_Status_Transit_T;
 
 /* Parameters (default storage) */
 struct P_MBD_Status_Transit_T_ {
   uint16_T Gain_Gain;                  /* Computed Parameter: Gain_Gain
                                         * Referenced by: '<Root>/Gain'
+                                        */
+  uint16_T Gain2_Gain;                 /* Computed Parameter: Gain2_Gain
+                                        * Referenced by: '<Root>/Gain2'
+                                        */
+  uint16_T Gain1_Gain;                 /* Computed Parameter: Gain1_Gain
+                                        * Referenced by: '<Root>/Gain1'
+                                        */
+  uint16_T Gain3_Gain;                 /* Computed Parameter: Gain3_Gain
+                                        * Referenced by: '<Root>/Gain3'
                                         */
 };
 

@@ -7,9 +7,9 @@
  *
  * Code generation for model "MBD_Status_Transit".
  *
- * Model version              : 1.6
+ * Model version              : 1.7
  * Simulink Coder version : 9.8 (R2022b) 13-May-2022
- * C source code generated on : Sat Dec  6 21:31:56 2025
+ * C source code generated on : Tue Dec  9 20:34:26 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex

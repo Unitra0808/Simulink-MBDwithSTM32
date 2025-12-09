@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MBD_Status_Transit'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.7
  * Simulink Coder version         : 9.8 (R2022b) 13-May-2022
- * C/C++ source code generated on : Sat Dec  6 21:31:56 2025
+ * C/C++ source code generated on : Tue Dec  9 20:34:26 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,7 +21,6 @@
 #include "MBD_Status_Transit_types.h"
 #include "rtwtypes.h"
 #include "stm_adc_ll.h"
-#include <stddef.h>
 #include "MBD_Status_Transit_private.h"
 
 /* Block signals (default storage) */
@@ -48,16 +47,16 @@ static void MBD_Status_Tra_SystemCore_setup(stm32cube_blocks_AnalogInput__T *obj
   ADC_Type_T adcStructLoc;
   obj->isSetupComplete = false;
   obj->isInitialized = 1;
-  adcStructLoc.dmaPeripheralPtr = NULL;
-  adcStructLoc.dmastream = 0;
-  adcStructLoc.InternalBufferPtr = (void *)(NULL);
+  adcStructLoc.dmastream = LL_DMA_STREAM_0;
+  adcStructLoc.dmaPeripheralPtr = DMA2;
+  adcStructLoc.InternalBufferPtr = (void*)(&obj->ADCInternalBuffer[0]);
   adcStructLoc.peripheralPtr = ADC1;
   adcStructLoc.InjectedNoOfConversion = 0U;
-  adcStructLoc.InternalBufferSize = 1U;
-  module = ADC_NORMAL_MODE;
+  adcStructLoc.InternalBufferSize = 4U;
+  module = ADC_DMA_INTERRUPT_MODE;
   triggerType = ADC_TRIGGER_AND_READ;
-  noConv = LL_ADC_REG_SEQ_SCAN_DISABLE;
-  adcStructLoc.RegularNoOfConversion = 1U;
+  noConv = LL_ADC_REG_SEQ_SCAN_ENABLE_4RANKS;
+  adcStructLoc.RegularNoOfConversion = 4U;
   obj->ADCHandle = ADC_Handle_Init(&adcStructLoc, module, 1, triggerType, noConv);
   enableADC(obj->ADCHandle);
   startADCConversionForExternalTrigger(obj->ADCHandle, 1);
@@ -67,22 +66,55 @@ static void MBD_Status_Tra_SystemCore_setup(stm32cube_blocks_AnalogInput__T *obj
 /* Model step function */
 void MBD_Status_Transit_step(void)
 {
-  uint16_T data;
+  uint16_T data[4];
   uint16_T triggerType;
 
   /* MATLABSystem: '<S3>/Analog to Digital Converter' */
   triggerType = ADC_TRIGGER_AND_READ;
-  regularReadADCNormal(MBD_Status_Transit_DW.obj.ADCHandle, triggerType, &data);
+  regularReadADCDMA(MBD_Status_Transit_DW.obj.ADCHandle, triggerType, &data[0]);
 
   /* Gain: '<Root>/Gain' incorporates:
    *  MATLABSystem: '<S3>/Analog to Digital Converter'
    */
-  MBD_Status_Transit_B.Gain = (uint32_T)MBD_Status_Transit_P.Gain_Gain * data;
+  MBD_Status_Transit_B.Gain = (uint32_T)MBD_Status_Transit_P.Gain_Gain * data[0];
 
   /* Outport: '<Root>/Out1' incorporates:
    *  Gain: '<Root>/Gain'
    */
   MBD_Status_Transit_Y.Out1 = MBD_Status_Transit_B.Gain;
+
+  /* Gain: '<Root>/Gain2' incorporates:
+   *  MATLABSystem: '<S3>/Analog to Digital Converter'
+   */
+  MBD_Status_Transit_B.Gain2 = (uint32_T)MBD_Status_Transit_P.Gain2_Gain * data
+    [1];
+
+  /* Outport: '<Root>/Out2' incorporates:
+   *  Gain: '<Root>/Gain2'
+   */
+  MBD_Status_Transit_Y.Out2 = MBD_Status_Transit_B.Gain2;
+
+  /* Gain: '<Root>/Gain1' incorporates:
+   *  MATLABSystem: '<S3>/Analog to Digital Converter'
+   */
+  MBD_Status_Transit_B.Gain1 = (uint32_T)MBD_Status_Transit_P.Gain1_Gain * data
+    [2];
+
+  /* Outport: '<Root>/Out3' incorporates:
+   *  Gain: '<Root>/Gain1'
+   */
+  MBD_Status_Transit_Y.Out3 = MBD_Status_Transit_B.Gain1;
+
+  /* Gain: '<Root>/Gain3' incorporates:
+   *  MATLABSystem: '<S3>/Analog to Digital Converter'
+   */
+  MBD_Status_Transit_B.Gain3 = (uint32_T)MBD_Status_Transit_P.Gain3_Gain * data
+    [3];
+
+  /* Outport: '<Root>/Out4' incorporates:
+   *  Gain: '<Root>/Gain3'
+   */
+  MBD_Status_Transit_Y.Out4 = MBD_Status_Transit_B.Gain3;
 
   {                                    /* Sample time: [0.0001s, 0.0s] */
   }
@@ -106,10 +138,10 @@ void MBD_Status_Transit_initialize(void)
   MBD_Status_Transit_M->Timing.stepSize0 = 0.0001;
 
   /* External mode info */
-  MBD_Status_Transit_M->Sizes.checksums[0] = (107053391U);
-  MBD_Status_Transit_M->Sizes.checksums[1] = (1158360391U);
-  MBD_Status_Transit_M->Sizes.checksums[2] = (645829477U);
-  MBD_Status_Transit_M->Sizes.checksums[3] = (90217635U);
+  MBD_Status_Transit_M->Sizes.checksums[0] = (2936424884U);
+  MBD_Status_Transit_M->Sizes.checksums[1] = (1531385032U);
+  MBD_Status_Transit_M->Sizes.checksums[2] = (2046238870U);
+  MBD_Status_Transit_M->Sizes.checksums[3] = (725181320U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -143,7 +175,7 @@ void MBD_Status_Transit_terminate(void)
     MBD_Status_Transit_DW.obj.matlabCodegenIsDeleted = true;
     if ((MBD_Status_Transit_DW.obj.isInitialized == 1) &&
         MBD_Status_Transit_DW.obj.isSetupComplete) {
-      mode = ADC_NORMAL_MODE;
+      mode = ADC_DMA_INTERRUPT_MODE;
       ADC_Handle_Deinit(MBD_Status_Transit_DW.obj.ADCHandle, mode, 1);
     }
   }

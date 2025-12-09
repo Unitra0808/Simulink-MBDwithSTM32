@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'MBD_Status_Transit'.
  *
- * Model version                  : 1.6
+ * Model version                  : 1.7
  * Simulink Coder version         : 9.8 (R2022b) 13-May-2022
- * C/C++ source code generated on : Sat Dec  6 21:31:56 2025
+ * C/C++ source code generated on : Tue Dec  9 20:34:26 2025
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -23,6 +23,21 @@
 P_MBD_Status_Transit_T MBD_Status_Transit_P = {
   /* Computed Parameter: Gain_Gain
    * Referenced by: '<Root>/Gain'
+   */
+  54080U,
+
+  /* Computed Parameter: Gain2_Gain
+   * Referenced by: '<Root>/Gain2'
+   */
+  54080U,
+
+  /* Computed Parameter: Gain1_Gain
+   * Referenced by: '<Root>/Gain1'
+   */
+  54080U,
+
+  /* Computed Parameter: Gain3_Gain
+   * Referenced by: '<Root>/Gain3'
    */
   54080U
 };
